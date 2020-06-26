@@ -1,3 +1,60 @@
 .waren .col {
 	margin: 5px;
 }
+
+body.activ {
+	overflow: hidden;
+}
+
+.card-title {
+	font-size: large;
+	font-weight: bold;
+}
+
+.shipping-info {
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	background-color: rgba(0,0,0,0.5);
+	/opacity: 20%;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index:10;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+}
+
+button:hover {
+	background-color: #d9d9d9;
+}
+
+.input-form {
+	margin: auto;
+	width: 400px;
+	height: 270px;
+	background: #ffff;
+	border-radius: 7px;
+}
+
+.input-label {
+	margin-top: 25px;
+	margin-left: 40px;
+	font-family: 'Montserrat Alternates';
+	font-size: 1.2em;
+}
+
+.form-control {
+	margin: auto;
+	width: 300px;
+}
+
+.input-form__button {
+	margin-top: 30px;
+	margin-left: 35%;
+	width: 30%;
+}
