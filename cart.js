@@ -85,12 +85,37 @@ function shippingInformation () {
 	//add event listener to the email input form
 	$('#form-control').change(function(){
 		emailSubmit = $('#form-control').val();
-		console.log(nameSubmit);
-		console.log(emailSubmit);
 	});
 
+	
 	//add event listener for submit button
-	$('.input-form__button').click(() => submitItems(nameSubmit, emailSubmit));
+	$('.input-form__button').click(() => {
+		//check whether the input data is correct
+		if (inputCorrect(nameSubmit, emailSubmit)) {
+			//run submit button function
+			submitItems(nameSubmit, emailSubmit)
+		} else {
+			alert('Incorrect input of name or email!');
+		}
+	});
+}
+
+//check whether the input data is correct
+function inputCorrect(nameSubmit, emailSubmit) {
+	//whether input no empty
+	if(!nameSubmit || !emailSubmit) return false;
+
+	//check whether the name is correct
+	for (let ch of nameSubmit)
+		if(!ch.match(/[a-zA-Z ]/))
+			return false;
+
+	//check whether the email is correct
+	let correctEmailPattern = /[\w\.]{1,}@[\w\.]{1,}\.[\w]{1,}/;
+	if (!emailSubmit.match(correctEmailPattern))
+		return false;
+
+	return true;
 }
 
 //calculates subtotal price of goods
@@ -118,4 +143,8 @@ function submitItems (nameSubmit, emailSubmit) {
 }
 
 //add event listener for 'Bye'-button on Shopping Cart
-$('.col-sm-3 button').click(shippingInformation);
+$('.col-sm-3 button').click(()=> {
+	if(orderItems.length)
+		shippingInformation();
+	else alert('There is no item in the list!');
+});
